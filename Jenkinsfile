@@ -26,7 +26,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Git Pulling') {
             steps {
                 git branch: 'master', url: 'https://github.com/akashhraturi/EKS-Terraform-GitHub-Actions.git'
@@ -35,7 +35,7 @@ pipeline {
         stage('Init') {
             steps {
                 withAWS(credentials: 'aws-creds', region: 'us-east-1') {
-                sh 'terraform -chdir=eks/ init -migrate-state'
+                sh 'terraform -chdir=eks/ init'
                 }
             }
         }
